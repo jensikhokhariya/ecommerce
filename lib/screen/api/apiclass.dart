@@ -1,8 +1,8 @@
 class Store {
   int? id;
   double? price;
-  String? title, description, category, images;
-  List<dynamic>? rating;
+  String? title, description, category, image;
+  Rate? rating;
 
   Store(
       {this.id,
@@ -10,7 +10,7 @@ class Store {
       this.title,
       this.description,
       this.category,
-      this.images,
+      this.image,
       this.rating});
 
   Store storeFactory(Map map) {
@@ -20,14 +20,15 @@ class Store {
       price: map['price'],
       description: map['description'],
       category: map['category'],
-      images: map['image'],
-      rating: map['rating'].map((e) => Rate().rateFactory(e)).toList(),
+      image: map['image'],
+      rating: Rate().rateFactory(map['rating']),
     );
   }
 }
 
 class Rate {
-  double? rate, count;
+  dynamic rate;
+  int? count;
 
   Rate({this.rate, this.count});
 

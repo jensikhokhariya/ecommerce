@@ -5,11 +5,11 @@ import 'package:http/http.dart' as http;
 class Apicall {
   String apilink = "https://fakestoreapi.com/products";
 
-  Future<Store> getData() async {
+  Future<List<dynamic>> getData() async {
     Uri uri = Uri.parse(apilink);
     var res = await http.get(uri);
 
-    var jsonData = jsonDecode(res.body);
-    return Store().storeFactory(jsonData);
+    var s2 = jsonDecode(res.body);
+    return s2.map((e)=>Store().storeFactory(e)).toList();
   }
 }
