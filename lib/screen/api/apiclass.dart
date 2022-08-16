@@ -13,16 +13,25 @@ class Store {
       this.images,
       this.rating});
 
-  Store newsFactory(Map map){
-    return Store(id: map['id'],title: map['title'],price: map['price'],description: map['description'],category: map['category'],images: map['image']);
+  Store storeFactory(Map map) {
+    return Store(
+      id: map['id'],
+      title: map['title'],
+      price: map['price'],
+      description: map['description'],
+      category: map['category'],
+      images: map['image'],
+      rating: map['rating'].map((e) => Rate().rateFactory(e)).toList(),
+    );
   }
 }
 
-class Rate{
-  double? rate,count;
+class Rate {
+  double? rate, count;
 
   Rate({this.rate, this.count});
-   Rate rateFactory(Map map){
-     return Rate(rate: map['rate'],count: map['count']);
-   }
+
+  Rate rateFactory(Map map) {
+    return Rate(rate: map['rate'], count: map['count']);
+  }
 }
