@@ -1,6 +1,6 @@
 class Store {
   int? id;
-  double? price;
+  dynamic price;
   String? title, description, category, image;
   Rate? rating;
 

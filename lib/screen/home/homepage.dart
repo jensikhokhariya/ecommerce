@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           height: double.infinity,
           width: double.infinity,
+          color: Colors.grey.shade400,
+          padding: EdgeInsets.all(5),
           child: Column(
             children: [
               Expanded(
@@ -37,39 +39,60 @@ class _HomePageState extends State<HomePage> {
                                   crossAxisCount: 2),
                           itemBuilder: (context, index) {
                             return GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.pushNamed(context, 'page2');
                               },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 100,
-                                    width: 100,
-                                    child: Image.network("${s1[index].image}"),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text("${s1[index].category}"),
-                                      SizedBox(
-                                        width: 10,
+                              child: Container(
+                                height: 200,
+                                width: 200,
+                                color: Colors.white,
+                                margin: EdgeInsets.all(2),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 110,
+                                      width: 110,
+                                      child: Image.network(
+                                        "${s1[index].image}",
+                                        fit: BoxFit.fill,
                                       ),
-                                      Container(
-                                        height:22,
-                                        width: 30,
-                                        alignment: Alignment.center,
-                                        child: Text("${s1[index].rating.rate},"),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          color: Colors.grey,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 5,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text("ps.${s1[index].price},"),
-                                    ],
-                                  ),
-                                ],
+                                        Text("${s1[index].category},"),
+                                        Spacer(),
+                                        Container(
+                                          height: 20,
+                                          width: 45,
+                                          child: Text(
+                                              "  ${s1[index].rating.rate}"),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.green.shade800,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "ps. ${s1[index].price}",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           });
