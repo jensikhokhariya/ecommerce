@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
           //color: Colors.grey.shade400,
           padding: EdgeInsets.all(5),
           child: Column(
+
             children: [
               Expanded(
                 child: FutureBuilder<List<dynamic>>(
