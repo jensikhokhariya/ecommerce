@@ -1,5 +1,7 @@
 import 'package:ecommerce/screen/api/storeapi.dart';
+import 'package:ecommerce/screen/home/homeprovider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,18 +11,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
+   var providerf;
+   var providert;
+   @override
   Widget build(BuildContext context) {
+    providerf = Provider.of<HomeProvider>(context,listen: false);
+    providert = Provider.of<HomeProvider>(context,listen: true);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text("Products"),
           centerTitle: true,
+          actions: [
+            Switch(value: Provider.of<HomeProvider>(context,listen: true).isTheme, onChanged: (value){
+              Provider.of<HomeProvider>(context,listen: false).changeTheme(value);
+            }),
+          ],
         ),
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Colors.grey.shade400,
+          //color: Colors.grey.shade400,
           padding: EdgeInsets.all(5),
           child: Column(
             children: [
@@ -45,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 height: 200,
                                 width: 200,
-                                color: Colors.white,
+                                // color: Colors.white,
                                 margin: EdgeInsets.all(2),
                                 child: Column(
                                   children: [
@@ -62,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 5,
                                         ),
-                                        Text("${s1[index].category},"),
+                                        Text("${s1[index].category},",),
                                         Spacer(),
                                         Container(
                                           height: 20,
@@ -87,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Text(
                                           "ps. ${s1[index].price}",
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(fontSize: 20,),
                                         ),
                                       ],
                                     ),

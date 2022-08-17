@@ -12,13 +12,32 @@ void main() {
           create: (context) => HomeProvider(),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (context) => HomePage(),
-          'page2':(context)=>Home_Screen(),
+      child: Consumer<HomeProvider>(
+        builder: (context,provider,_){
+          //provider.
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: provider.isTheme?lightTheme:darkTheme,
+            routes: {
+              '/': (context) => HomePage(),
+              'page2':(context)=>Home_Screen(),
+            },
+          );
         },
       ),
     ),
   );
 }
+
+
+ThemeData lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(color: Colors.green.shade900),
+  textTheme: TextTheme(headline1: TextStyle(color: Colors.black),),
+  brightness: Brightness.light,
+);
+ThemeData darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(color: Colors.green.shade600),
+  textTheme: TextTheme(headline1: TextStyle(color: Colors.black),),
+  brightness: Brightness.dark,
+);
+
